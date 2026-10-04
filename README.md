@@ -1,6 +1,6 @@
 ## Project Architecture
 
-📄 **[View PDF](./Project-Architecture-and-CICD-Pipeline.pdf)**
+📄 **[View Project Architecture & CI/CD Pipeline](./Project-Architecture-and-CICD-Pipeline.pdf)**
 
 The document provides a visual representation of the complete flow from GitHub → Jenkins → Maven → SonarQube → Nexus → Docker → Docker Hub → Docker Swarm.
 
