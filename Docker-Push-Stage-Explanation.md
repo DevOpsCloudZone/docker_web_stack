@@ -1,5 +1,25 @@
 # Docker Push Stage – Jenkins Pipeline
-
+## Our Stage 
+```bash
+stage('Docker Push') {
+    steps {
+        withCredentials([
+            usernamePassword(
+                credentialsId: 'dockerhubid',
+                usernameVariable: 'DOCKER_USERNAME',
+                passwordVariable: 'DOCKER_PASSWORD'
+            )
+        ]) {
+            sh '''
+                echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+                docker push umesh2425/appstack:app
+                docker push umesh2425/appstack:db
+                docker logout
+            '''
+        }
+    }
+}
+```
 ## Docker Push Stage
 
 ### 1. `stage('Docker Push')`
