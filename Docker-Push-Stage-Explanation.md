@@ -19,7 +19,7 @@ stage('Docker Push') {
     }
 }
 ```
-##1.stage('Docker Push')
+**1.stage('Docker Push')**
 stage('Docker Push') {
 
 This creates a Jenkins pipeline stage named:
@@ -31,7 +31,8 @@ Docker Build
 Docker Push
 
 The purpose of this stage is to take the images that were built locally and upload them to Docker Hub.
-2. steps
+
+**2. steps**
 steps {
 
 steps contains the actual commands Jenkins should execute inside this stage.
@@ -40,7 +41,7 @@ stage
   └── steps
        └── commands
 
-3. withCredentials
+**3. withCredentials**
 withCredentials([
 
 This is the important security part.
@@ -53,7 +54,7 @@ We created:
 ID: dockerhubid
 
 Jenkins retrieves that credential when this stage runs.
-4. usernamePassword
+**4. usernamePassword**
 usernamePassword(
 
 This tells Jenkins what type of credential we're retrieving.
@@ -62,7 +63,7 @@ Username
 Password/Token
 
 So we're using the usernamePassword binding.
-5. credentialsId
+**5. credentialsId**
 credentialsId: 'dockerhubid',
 
 This tells Jenkins which stored credential to use.
@@ -82,7 +83,7 @@ username + password/token
 
 This is not your Docker Hub username.
 It's the ID of the credential stored in Jenkins.
-6. usernameVariable
+**6. usernameVariable**
 usernameVariable: 'DOCKER_USERNAME',
 
 This tells Jenkins:
@@ -103,7 +104,7 @@ instead of writing:
 umesh2425
 
 This makes the authentication reusable.
-7. passwordVariable
+**7. passwordVariable**
 passwordVariable: 'DOCKER_PASSWORD'
 
 Same idea.
@@ -119,7 +120,7 @@ Password/Token = ********
 DOCKER_PASSWORD=********
 
 We never write the actual token in the Jenkinsfile.
-8. Closing the credential configuration
+**8. Closing the credential configuration**
 )
 
 This closes:
@@ -141,7 +142,7 @@ withCredentials([
 means:
 "Get the Jenkins credential called dockerhubid and temporarily expose its username as DOCKER_USERNAME and its password/token as DOCKER_PASSWORD."
 
-9. {
+**9.** {
 {
 
 Everything inside this block gets access to those temporary variables.
@@ -153,8 +154,8 @@ withCredentials
       │
       └── shell commands
 
-10. sh '''
-sh '''
+**10. sh '''
+sh '''**
 
 sh tells Jenkins:
 Execute the following commands using the Linux shell.
@@ -168,7 +169,7 @@ sh '''
 '''
 
 is essentially Jenkins executing those Linux commands on the Jenkins server.
-11. Docker login
+**11. Docker login**
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 This is the most important line.
@@ -253,7 +254,7 @@ Docker Hub
 └── umesh2425/appstack
     └── app
 
-13. Push database image
+**13. Push database image**
 docker push umesh2425/appstack:db
 
 Same thing, but for the database image.
@@ -266,7 +267,7 @@ Docker Hub
     ├── app
     └── db
 
-14. Docker logout
+**14. Docker logout**
 docker logout
 
 After the push is finished, Jenkins logs out of Docker Hub.
@@ -283,7 +284,7 @@ push db
 docker logout
 
 This is a good practice because we don't need to leave the Docker Hub authentication active after the stage.
-15. Why docker logout doesn't delete the images
+**15. Why docker logout doesn't delete the images**
 Important distinction:
 docker logout
 
