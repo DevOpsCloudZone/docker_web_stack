@@ -1,5 +1,5 @@
 # Docker Push Stage – Jenkins Pipeline
-## Our Stage 
+## Our Pipeline Stage 
 ```bash
 stage('Docker Push') {
     steps {
