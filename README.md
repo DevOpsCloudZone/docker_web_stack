@@ -1,13 +1,9 @@
-# Docker Web Stack
-
-## Project Overview
-
-This project implements an end-to-end CI/CD pipeline for a Java web application using Jenkins, Maven, SonarQube, Nexus, Docker, Docker Hub, and Docker Swarm.
-
 ## Project Architecture
 
-📄 **[View Project Architecture & CI/CD Pipeline](./Project-Architecture-and-CICD-Pipeline.pdf)**
+📄 **[View PDF](./Project-Architecture-and-CICD-Pipeline.pdf)**
 
-## Documentation
+The document provides a visual representation of the complete flow from GitHub → Jenkins → Maven → SonarQube → Nexus → Docker → Docker Hub → Docker Swarm.
+
+## Detailed Documentation
 
 📘 **[Docker Push Stage – Detailed Explanation](./Docker-Push-Stage-Explanation.md)**
