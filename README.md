@@ -12,7 +12,7 @@ This project implements an end-to-end CI/CD pipeline for a Java web application 
 
 📘 **[Docker Push Stage – Detailed Explanation](./Docker-Push-Stage-Explanation.md)**
 
-## Jenkins Installation on Amazon Linux 2023
+## Jenkins Installation on EC2
 
 ### Step 1: Add the Jenkins Repository
 
@@ -166,25 +166,16 @@ admin
 
 After the first login, update the password.
 
-### For the detailed SonarQube UI steps, including project creation, token generation, and Jenkins integration, refer to the detailed project documentation.
-
 ### Add the Jenkins webhook URL:
 
 ```text
 http://<JENKINS-PUBLIC-IP>:8080/sonarqube-webhook/
 ```
-
 This webhook allows Jenkins to receive the SonarQube Quality Gate result.
 
-### Verify SonarQube
+### For the detailed SonarQube UI steps, including project creation, token generation, and Jenkins integration, refer to the detailed project documentation.
+📄 **[View the Complete Project Documentation](./Project-Architecture-and-CICD-Pipeline.pdf)**
 
-After the Jenkins pipeline runs, verify the code-quality analysis results in the SonarQube UI.
-
-```bash
-cd /opt
-```
-
-yeah give me that syntack iwill copuy and past it in readme
 ## Nexus Repository Installation on EC2
 
 ### Step 1: Create a New EC2 Instance
@@ -253,3 +244,4 @@ Get the initial admin password:
 cat /opt/sonatype-work/nexus3/admin.password
 ```
 ### **For the detailed Nexus UI configuration, repository creation, Jenkins credentials, and artifact uploader setup, refer to the detailed project documentation.**
+**[View the Complete Project Documentation](./Project-Architecture-and-CICD-Pipeline.pdf)**
