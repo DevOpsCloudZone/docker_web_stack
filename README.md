@@ -166,16 +166,6 @@ admin
 
 After the first login, update the password.
 
-### Step 8: Create SonarQube Project
-
-From the SonarQube UI:
-
-```text
-Create a local project
-```
-
-Enter your project name and create the project.
-
 ### For the detailed SonarQube UI steps, including project creation, token generation, and Jenkins integration, refer to the detailed project documentation.
 
 ### Add the Jenkins webhook URL:
@@ -190,6 +180,76 @@ This webhook allows Jenkins to receive the SonarQube Quality Gate result.
 
 After the Jenkins pipeline runs, verify the code-quality analysis results in the SonarQube UI.
 
+```bash
+cd /opt
+```
 
+yeah give me that syntack iwill copuy and past it in readme
+## Nexus Repository Installation on EC2
 
+### Step 1: Create a New EC2 Instance
 
+Create a new EC2 instance for Nexus Repository installation.
+
+### Step 2: Install Nexus Repository
+
+Run the following commands:
+
+```bash
+cd /opt
+```
+
+```bash
+wget https://download.sonatype.com/nexus/3/nexus-3.96.0-09-linux-x86_64.tar.gz
+```
+
+```bash
+tar -zxvf nexus-3.96.0-09-linux-x86_64.tar.gz
+```
+
+```bash
+useradd nexus
+```
+
+```bash
+chown -R nexus:nexus nexus-3.96.0-09 sonatype-work
+```
+
+```bash
+su - nexus
+```
+
+```bash
+cd /opt/nexus-3.96.0-09/bin/
+```
+
+```bash
+./nexus start
+```
+
+### Step 3: Allow Port 8081
+
+Allow **TCP port 8081** in the EC2 Security Group → Inbound Rules.
+
+### Step 4: Access Nexus
+
+Open Nexus in your browser:
+
+```text
+http://<EC2-Public-IP>:8081
+```
+
+### Step 5: Login to Nexus
+
+Username:
+
+```text
+admin
+```
+
+Get the initial admin password:
+
+```bash
+cat /opt/sonatype-work/nexus3/admin.password
+```
+### **For the detailed Nexus UI configuration, repository creation, Jenkins credentials, and artifact uploader setup, refer to the detailed project documentation.**
