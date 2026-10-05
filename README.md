@@ -25,17 +25,17 @@ sudo yum upgrade -y
 
 ## Step 2: Install Java 21 and Required Dependencies
 
-### Amazon Linux 2023
+**Amazon Linux 2023**
 
 ```bash
 sudo yum install fontconfig java-21-amazon-corretto -y
 ```
-### Red Hat / CentOS
+**Red Hat / CentOS**
 
 ```bash
 sudo yum install fontconfig java-21-openjdk -y
 ```
-### Ubuntu / Debian
+**Ubuntu / Debian**
 
 ```bash
 sudo apt update
@@ -84,3 +84,110 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 
 Enter the password in the Jenkins setup page, install the suggested plugins, and create your administrator account.
+
+## SonarQube Installation on EC2
+
+### Step 1: Create a New EC2 Server
+
+Create a new EC2 instance for SonarQube installation.
+
+### Step 2: Install Docker
+
+```bash
+sudo yum install docker -y
+```
+
+Start and enable Docker:
+
+```bash
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo systemctl status docker
+```
+
+Verify Docker installation:
+
+```bash
+docker -v
+```
+
+### Step 3: Pull SonarQube Docker Image
+
+Pull the SonarQube image from Docker Hub:
+
+```bash
+docker pull sonarqube
+```
+
+Verify the downloaded image:
+
+```bash
+docker images
+```
+
+### Step 4: Run SonarQube Container
+
+Run SonarQube and map port `9000`:
+
+```bash
+docker run -d --name sonarqube-cont -p 9000:9000 sonarqube:latest
+```
+
+Verify that the container is running:
+
+```bash
+docker ps
+```
+
+### Step 5: Allow Port 9000 in EC2
+
+Make sure **TCP port 9000** is allowed in the SonarQube EC2 instance's **Security Group → Inbound Rules**.
+
+### Step 6: Access SonarQube
+
+Open SonarQube in your browser:
+
+```text
+http://<EC2-PUBLIC-IP>:9000
+```
+
+### Step 7: SonarQube Initial Login
+
+Use the default credentials:
+
+username:
+```bash
+admin
+```
+Password:
+```bash
+admin
+```
+
+After the first login, update the password.
+
+### Step 8: Create SonarQube Project
+
+From the SonarQube UI:
+
+```text
+Create a local project
+```
+
+Enter your project name and create the project.
+
+### Add the Jenkins webhook URL:
+
+```text
+http://<JENKINS-PUBLIC-IP>:8080/sonarqube-webhook/
+```
+
+This webhook allows Jenkins to receive the SonarQube Quality Gate result.
+
+### Step 9 : Verify SonarQube
+
+After the Jenkins pipeline runs, verify the code-quality analysis results in the SonarQube UI.
+
+
+
+
