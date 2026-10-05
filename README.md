@@ -166,15 +166,17 @@ admin
 
 After the first login, update the password.
 
+### For the detailed SonarQube UI steps, including project creation, token generation, and Jenkins integration, refer to the detailed project documentation.
+
+📄 **[View the Complete Project Documentation](./Project-Architecture-and-CICD-Pipeline.pdf)**
+
+
 ### Add the Jenkins webhook URL:
 
 ```text
 http://<JENKINS-PUBLIC-IP>:8080/sonarqube-webhook/
 ```
 This webhook allows Jenkins to receive the SonarQube Quality Gate result.
-
-### For the detailed SonarQube UI steps, including project creation, token generation, and Jenkins integration, refer to the detailed project documentation.
-📄 **[View the Complete Project Documentation](./Project-Architecture-and-CICD-Pipeline.pdf)**
 
 ## Nexus Repository Installation on EC2
 
@@ -244,4 +246,5 @@ Get the initial admin password:
 cat /opt/sonatype-work/nexus3/admin.password
 ```
 ### **For the detailed Nexus UI configuration, repository creation, Jenkins credentials, and artifact uploader setup, refer to the detailed project documentation.**
+
 **[View the Complete Project Documentation](./Project-Architecture-and-CICD-Pipeline.pdf)**
