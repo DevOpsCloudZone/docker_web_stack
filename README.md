@@ -176,6 +176,8 @@ Create a local project
 
 Enter your project name and create the project.
 
+### For the detailed SonarQube UI steps, including project creation, token generation, and Jenkins integration, refer to the detailed project documentation.
+
 ### Add the Jenkins webhook URL:
 
 ```text
@@ -184,7 +186,7 @@ http://<JENKINS-PUBLIC-IP>:8080/sonarqube-webhook/
 
 This webhook allows Jenkins to receive the SonarQube Quality Gate result.
 
-### Step 9 : Verify SonarQube
+### Verify SonarQube
 
 After the Jenkins pipeline runs, verify the code-quality analysis results in the SonarQube UI.
 
