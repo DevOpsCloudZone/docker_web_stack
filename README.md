@@ -8,6 +8,10 @@ This project implements an end-to-end CI/CD pipeline for a Java web application 
 
 📄 **[View Project Architecture & CI/CD Pipeline](./Project-Architecture-and-CICD-Pipeline.pdf)**
 
+### Jenkinsfile
+
+📄 **[View Jenkinsfile](./Jenkinsfile)**
+
 ## Documentation
 
 📘 **[Docker Push Stage – Detailed Explanation](./Docker-Push-Stage-Explanation.md)**
