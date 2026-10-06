@@ -120,7 +120,7 @@ docker -v
 Pull the SonarQube image from Docker Hub:
 
 ```bash
-docker pull sonarqube
+docker pull sonarqube:lts-commmunity
 ```
 
 Verify the downloaded image:
@@ -134,7 +134,7 @@ docker images
 Run SonarQube and map port `9000`:
 
 ```bash
-docker run -d --name sonarqube-cont -p 9000:9000 sonarqube:latest
+docker run -d --name sonarqube-cont -p 9000:9000 sonarqube:lts-community
 ```
 
 Verify that the container is running:
