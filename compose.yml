@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   devopsdb:
-    image: umesh2425/appstack:db
+    image: umesh2425/dbimage:db
     ports:
       - "3306:3306"
     deploy:
@@ -11,7 +11,7 @@ services:
       - mynetwork
 
   application:
-    image: umesh2425/appstack:app
+    image: umesh2425/appimage:javapp
     ports:
       - "1111:8080"
     deploy:
